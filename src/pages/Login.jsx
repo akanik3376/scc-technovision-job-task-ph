@@ -3,28 +3,48 @@
 import React, { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
+import swal from 'sweetalert';
 
 const Login = () => {
+
+    const { LoginUser, googleLogin } = useAuth()
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleLogin = (e) => {
+    const HandelGoogleLogin = () => {
+        googleLogin()
+    }
+
+    const handleLogin = async (e) => {
         e.preventDefault();
-        // Add your login logic here
-        console.log('Login clicked:', email, password);
+
+        // Login User
+        try {
+            await LoginUser(email, password)
+            if (user?.accessToken) {
+                swal("user login success fully")
+                navigate(location?.state ? location.state : '/')
+            }
+            else { swal("invalid-login-credentials! please try again ") }
+
+        } catch (err) {
+            console.log(err)
+        }
 
         // Clear form fields after submission
         setEmail('');
         setPassword('');
     };
 
-    const handleCheckboxChange = () => {
+    const HandleCheckboxChange = () => {
         setShowPassword(!showPassword);
     };
 
     return (
-        <div className="mt-8 max-w-md mx-auto">
+        <div className="mt-8 max-w-md mx-auto px-2 md:px-0">
             <h2 className="text-2xl font-bold mb-4 text-center text-blue-500">Login</h2>
             <form onSubmit={handleLogin}>
                 <div className="mb-4">
@@ -56,7 +76,7 @@ const Login = () => {
                         <input
                             type="checkbox"
                             checked={showPassword}
-                            onChange={handleCheckboxChange}
+                            onChange={HandleCheckboxChange}
                             className="checkbox "
                         />
                         <span className="label-text">Show Password</span>
@@ -68,7 +88,8 @@ const Login = () => {
             {/* login with google */}
             <div className='mt-4'>
 
-                <div className='mt-4 border-2 flex items-center justify-center text-2xl gap-x-2  w-1/2  font-semibold border-blue-500 mb-2'>
+                <div onClick={HandelGoogleLogin}
+                    className='mt-4 border-2 flex items-center justify-center text-2xl gap-x-2  w-1/2  font-semibold border-blue-500 mb-2'>
                     Login with <FcGoogle />
                 </div>
 

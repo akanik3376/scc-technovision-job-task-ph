@@ -9,7 +9,9 @@ const Main = () => {
     return (
         <>
             <Navbar />
+
             <Outlet />
+
             <Footer />
         </>
     );
