@@ -21,10 +21,7 @@ const routes = createBrowserRouter([
                 path: '/about',
                 element: <h3>This is about page</h3>
             },
-            {
-                path: '/dashboard',
-                element: <Dashboard />
-            },
+
         ]
     },
     {
@@ -34,7 +31,22 @@ const routes = createBrowserRouter([
     {
         path: '/register',
         element: <Register />
-    }
+    },
+
+    // dashboard
+    {
+        path: '/dashboard',
+        element: <Dashboard />,
+
+        children: [
+            {
+                path: '/dashboard',
+                element: <p>Anik</p>
+            },
+
+
+        ]
+    },
 ])
 
 export default routes;

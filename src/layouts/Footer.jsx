@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { FaTwitterSquare, FaFacebook, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
     return (
@@ -7,8 +8,8 @@ const Footer = () => {
             <div className="container mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div className="mb-4">
-                        <h2 className="text-lg font-bold mb-2">About Us</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h2 className="text-lg font-bold mb-2">SCC Technovision Inc</h2>
+                        <p>Elevate efficiency with our sleek Task Management Platform.</p>
                     </div>
 
                     <div className="mb-4">
@@ -31,21 +32,27 @@ const Footer = () => {
 
                     <div className="mb-4">
                         <h2 className="text-lg font-bold mb-2">Contact Us</h2>
-                        <p>Email: info@example.com</p>
+                        <p>Email: ridoygh51@gmail.com</p>
                         <p>Phone: +1 234 567 890</p>
                     </div>
 
                     <div className="mb-4">
                         <h2 className="text-lg font-bold mb-2">Follow Us</h2>
-                        <div className="flex space-x-2">
+                        <div className="flex space-x-2 text-3xl">
                             <a href="#" className="text-white">
-                                <i className="fab fa-facebook"></i>
+                                <i className="fab fa-facebook">
+                                    <FaTwitterSquare />
+                                </i>
                             </a>
                             <a href="#" className="text-white">
-                                <i className="fab fa-twitter"></i>
+                                <i className="fab fa-twitter">
+                                    <FaFacebook />
+                                </i>
                             </a>
                             <a href="#" className="text-white">
-                                <i className="fab fa-linkedin"></i>
+                                <i className="fab fa-linkedin">
+                                    <FaLinkedin />
+                                </i>
                             </a>
                             <a href="#" className="text-white">
                                 <i className="fab fa-instagram"></i>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
+import logo from '../assets/demo_logo.png'
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,9 +16,11 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-gray-800 p-4 relative">
+        <nav className="bg-gray-800 p-4 relative z-10">
             <div className="container mx-auto flex justify-between items-center">
-                <div className="text-white font-bold">Your Logo</div>
+                <div className="text-white font-bold">
+                    <img src={logo} alt="" />
+                </div>
 
                 <div className="md:hidden">
                     <button
@@ -62,15 +65,17 @@ const Navbar = () => {
                     >
                         About
                     </NavLink>
-                    {/* Contact */}
-                    <NavLink
-                        to="/dashboard"
-                        className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "underline text-white p-2 w-full border-red-600 bg-gray-800" : "text-white p-2 w-full border-red-600 bg-gray-800"
-                        }
-                    >
-                        Dashboard
-                    </NavLink>
+
+                    {
+                        user && <NavLink
+                            to="/dashboard"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "underline text-white p-2 w-full border-red-600 bg-gray-800" : "text-white p-2 w-full border-red-600 bg-gray-800"
+                            }
+                        >
+                            Dashboard
+                        </NavLink>
+                    }
 
                     {
                         user ? <NavLink onClick={HandelLogout}
