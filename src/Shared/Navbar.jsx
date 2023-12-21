@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const { logoutUser, user } = useAuth()
+
+    const HandelLogout = () => {
+        logoutUser()
+    }
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -65,22 +71,28 @@ const Navbar = () => {
                     >
                         Dashboard
                     </NavLink>
-                    <NavLink
-                        to="/login"
-                        className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "underline text-white p-2 w-full border-red-600 bg-gray-800" : "text-white p-2 w-full border-red-600 bg-gray-800"
-                        }
-                    >
-                        Login
-                    </NavLink>
-                    <NavLink
-                        to="/register"
-                        className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "underline text-white p-2 w-full border-red-600 bg-gray-800" : "text-white p-2 w-full border-red-600 bg-gray-800"
-                        }
-                    >
-                        Register
-                    </NavLink>
+
+                    {
+                        user ? <NavLink onClick={HandelLogout}
+                            to="/login"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "underline text-white p-2 w-full border-red-600 bg-gray-800" : "text-white p-2 w-full border-red-600 bg-gray-800"
+                            }
+                        >
+                            Logout
+                        </NavLink>
+                            :
+                            <NavLink
+                                to="/login"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "underline text-white p-2 w-full border-red-600 bg-gray-800" : "text-white p-2 w-full border-red-600 bg-gray-800"
+                                }
+                            >
+                                Login
+                            </NavLink>
+                    }
+
+
                 </div>
             </div>
         </nav>

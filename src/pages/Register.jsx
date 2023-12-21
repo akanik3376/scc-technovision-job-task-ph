@@ -1,11 +1,15 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../Hooks/useAuth"
 const Register = () => {
 
     const { googleLogin, createUser } = useAuth()
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    // collet form data
     const [name, setName] = useState('');
     const [image, setImage] = useState('');
     const [email, setEmail] = useState('');
@@ -14,12 +18,20 @@ const Register = () => {
     const [error, setError] = useState()
 
     const HandelGoogleRegister = () => {
-        googleLogin()
+        const HandelGoogleLogin = async () => {
+            try {
+                googleLogin()
+
+                navigate(location?.state ? location.state : '/')
+            } catch (err) {
+                console.log(err)
+            }
+        }
     }
 
     const HandleRegister = async (e) => {
         e.preventDefault();
-        // Add your registration logic here
+        // registration  
         console.log('Register clicked:', name, image, email, password);
         setError('')
 
@@ -35,12 +47,10 @@ const Register = () => {
 
         try {
             await createUser(email, password)
-            if (user?.accessToken) {
-                swal("user create success fully")
-                navigate(location?.state ? location.state : '/')
-            }
 
-            // console.log('created', user)
+            swal("user create success fully")
+            navigate(location?.state ? location.state : '/')
+
         } catch (err) {
             console.log(err)
         }

@@ -2,20 +2,29 @@
 
 import React, { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import swal from 'sweetalert';
 
 const Login = () => {
 
     const { LoginUser, googleLogin } = useAuth()
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
-    const HandelGoogleLogin = () => {
-        googleLogin()
+    const HandelGoogleLogin = async () => {
+
+        try {
+            googleLogin()
+
+            navigate(location?.state ? location.state : '/')
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     const handleLogin = async (e) => {
