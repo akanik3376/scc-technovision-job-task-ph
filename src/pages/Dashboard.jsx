@@ -31,6 +31,9 @@ const Dashboard = () => {
         <li><NavLink to="/dashboard/todo-task" onClick={closeDrawer} className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "underline  p-2 w-full border-red-600 " : " p-2 w-full border-red-600 "
         }>Task Management</NavLink></li>
+        <li><NavLink to="/dashboard/list" onClick={closeDrawer} className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "underline  p-2 w-full border-red-600 " : " p-2 w-full border-red-600 "
+        }>Todo List</NavLink></li>
     </>
 
     return (

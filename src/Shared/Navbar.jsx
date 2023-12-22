@@ -65,6 +65,14 @@ const Navbar = () => {
                     >
                         About
                     </NavLink>
+                    <NavLink
+                        to="/all-task"
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "underline text-white p-2 w-full border-red-600 bg-gray-800" : "text-white p-2 w-full border-red-600 bg-gray-800"
+                        }
+                    >
+                        Tasks
+                    </NavLink>
 
                     {
                         user && <NavLink

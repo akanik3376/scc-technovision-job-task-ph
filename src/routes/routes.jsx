@@ -9,6 +9,10 @@ import DashBoardHome from '../pages/Dashboard/DashBoardHome';
 import CreateTask from '../pages/Dashboard/CreateTask';
 import ToDoList from '../pages/Dashboard/ToDoList';
 import PrivetRoot from '../routes/PrivetRoot';
+import AllTask from '../pages/AllTask';
+import List from '../pages/Dashboard/List';
+import About from '../pages/About';
+import EditTask from '../components/DashboardForm/UpdateTask';
 
 
 const routes = createBrowserRouter([
@@ -23,7 +27,11 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/about',
-                element: <h3>This is about page</h3>
+                element: <About></About>
+            },
+            {
+                path: '/all-task',
+                element: <AllTask></AllTask>
             },
 
         ]
@@ -55,9 +63,19 @@ const routes = createBrowserRouter([
                 path: '/dashboard/todo-task',
                 element: <ToDoList></ToDoList>
             },
+            {
+                path: '/dashboard/list',
+                element: <List />
+            },
+
 
 
         ]
+    },
+    {
+        path: '/update-task/:id',
+        element: <EditTask></EditTask>,
+        loader: ({ params }) => fetch(`http://localhost:3000/api/v1/show-task/${params.id}`)
     },
 ])
 
