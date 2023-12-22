@@ -1,7 +1,7 @@
 // Dashboard.js
 
 import React, { useState } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 
 const Dashboard = () => {
@@ -48,6 +48,10 @@ const Dashboard = () => {
                     {url}
                 </ul>
                 <button onClick={HandelLogout} className='bg-blue-500 px-4 py-2 rounded-md mt-4 text-white font-semibold w-full'>Logout</button>
+
+                <Link to="/">
+                    <button className='bg-blue-500 px-4 py-2 rounded-md mt-4 text-white font-semibold w-full mt-4'>Go to home</button>
+                </Link>
             </div>
 
             {/* Drawer for Small Screens */}
@@ -61,7 +65,11 @@ const Dashboard = () => {
                     <ul className="space-y-2 font-semibold">
                         {url}
                     </ul>
-                    <button onClick={HandelLogout} className='btn'>Logout</button>
+                    <button onClick={HandelLogout} className='bg-blue-500 px-4 py-2 rounded-md mt-4 text-white font-semibold w-full'>Logout</button>
+
+                    <Link to="/">
+                        <button className='bg-blue-500 px-4 py-2 rounded-md mt-4 text-white font-semibold w-full '>Go to home</button>
+                    </Link>
                 </>}
             </div>
 
