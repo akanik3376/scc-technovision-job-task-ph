@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 
 const PrivetRoot = ({ children }) => {

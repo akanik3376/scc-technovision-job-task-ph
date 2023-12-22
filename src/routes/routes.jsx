@@ -5,6 +5,10 @@ import Home from '../pages/Home';
 import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
 import Register from '../pages/Register';
+import DashBoardHome from '../pages/Dashboard/DashBoardHome';
+import CreateTask from '../pages/Dashboard/CreateTask';
+import ToDoList from '../pages/Dashboard/ToDoList';
+import PrivetRoot from '../routes/PrivetRoot';
 
 
 const routes = createBrowserRouter([
@@ -36,12 +40,20 @@ const routes = createBrowserRouter([
     // dashboard
     {
         path: '/dashboard',
-        element: <Dashboard />,
+        element: <PrivetRoot><Dashboard /></PrivetRoot>,
 
         children: [
             {
-                path: '/dashboard',
-                element: <p>Anik</p>
+                path: '/dashboard/home',
+                element: <DashBoardHome></DashBoardHome>
+            },
+            {
+                path: '/dashboard/create-task',
+                element: <CreateTask></CreateTask>
+            },
+            {
+                path: '/dashboard/todo-task',
+                element: <ToDoList></ToDoList>
             },
 
 
